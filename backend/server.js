@@ -6,7 +6,7 @@ require("dotenv").config();
 
 const app = express();
 // app.use(cors());
-app.use(express.json());
+
 
 // Allow requests from Vercel frontend
 app.use(cors({
@@ -14,6 +14,8 @@ app.use(cors({
   methods: ['GET', 'POST'],
   credentials: true
 }));
+app.use(express.json());
+app.options('*', cors());
 
 // Replace this with your own MongoDB connection string
 mongoose.connect(process.env.MONGO_URI).then(() => console.log("MongoDB connected"))
