@@ -356,7 +356,7 @@
       const formData = new FormData(this);
       const data = Object.fromEntries(formData);
 
-      await fetch("https://portal-bisep-pk.up.railway.app/submit", {
+      await fetch("https://bise-new-data.up.railway.app/submit", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(data)
