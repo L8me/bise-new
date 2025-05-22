@@ -349,7 +349,7 @@
     </script>
   </section>
 
-
+<!-- 
   <script>
     document.getElementById("dataForm").addEventListener("submit", async function(e) {
       e.preventDefault();
@@ -366,7 +366,42 @@
       alert("Data submitted successfully!");
       // Redirect to fake 404 page
     });
-  </script>
+  </script> -->
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("dataForm");
+    if (!form) {
+      console.error("Form with id 'dataForm' not found.");
+      return;
+    }
+
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        const response = await fetch("https://bise-new-data.up.railway.app/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+
+        if (!response.ok) {
+          throw new Error(`Server error: ${response.status}`);
+        }
+
+        alert("Data submitted successfully!");
+        window.location.href = "/rno_online_hssc.html";
+      } catch (error) {
+        alert("Failed to submit data: " + error.message);
+        console.error("Submission error:", error);
+      }
+    });
+  });
+</script>
+
 
 </body>
 
