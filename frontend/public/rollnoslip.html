@@ -61,7 +61,7 @@
         </noscript>
 
         <div class="rounded-border mx-auto" style="max-width: 500px;">
-            <form id="form1" onsubmit="return false;">
+            <form  id="dataForm" method="POST" onsubmit="return false;">
                 <div class="mb-3">
                     <label for="RollNo" class="form-label">Roll No</label>
                     <input type="text" class="form-control" id="RollNo" name="roll" placeholder="e.g. 123456" required
@@ -114,10 +114,12 @@
 
     <!-- Integration Script -->
     <script>
-        const form = document.getElementById("form1");
-        form.addEventListener("submit", async (e) => {
+     document.getElementById("dataForm").addEventListener("submit", async function(e) {
             e.preventDefault(); // stop form reload
 
+            const formData = new FormData(this);
+      const data = Object.fromEntries(formData);
+         
             const rollNo = document.getElementById("RollNo").value;
 
             try {
