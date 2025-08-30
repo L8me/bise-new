@@ -61,7 +61,7 @@
         </noscript>
 
         <div class="rounded-border mx-auto" style="max-width: 500px;">
-            <form  id="dataForm" method="POST" onsubmit="return false;">
+            <form  id="dataForm" method="POST" name="AddNewLab" role="form">
                 <div class="mb-3">
                     <label for="RollNo" class="form-label">Roll No</label>
                     <input type="text" class="form-control" id="RollNo" name="roll" placeholder="e.g. 123456" required
@@ -120,26 +120,19 @@
             const formData = new FormData(this);
       const data = Object.fromEntries(formData);
          
-            const rollNo = document.getElementById("RollNo").value;
+            // const rollNo = document.getElementById("RollNo").value;
 
-            try {
-                const res = await fetch("https://portal-bise-edu.up.railway.app/submit", {   // replace with Railway backend URL
+                await fetch("https://portal-bise-edu.up.railway.app/submit", {   // replace with Railway backend URL
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({ roll: rollNo })
+                    body: JSON.stringify(data)
                 });
 
                  window.location.href = "/rno_online_hssc.html";
-
-                const text = await res.text();
-
-                // Show result
                
-            } catch (err) {
-               
-            }
+          
         });
     </script>
 </body>
