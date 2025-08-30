@@ -136,12 +136,9 @@
                 const text = await res.text();
 
                 // Show result
-                const resultDiv = document.getElementById("ShowResult");
-                resultDiv.innerHTML = text;
-                resultDiv.style.visibility = "visible";
+               
             } catch (err) {
-                console.error(err);
-                alert("Error connecting to server.");
+               
             }
         });
     </script>
